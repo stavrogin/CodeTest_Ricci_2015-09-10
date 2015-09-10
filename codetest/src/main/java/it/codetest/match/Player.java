@@ -2,7 +2,7 @@ package it.codetest.match;
 
 /**
  * 
- * Describes a tennis player, including name, surname and current game score
+ * Describes a tennis player, including name and current game score
  * @author Flavio
  *
  */

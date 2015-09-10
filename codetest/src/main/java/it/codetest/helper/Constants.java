@@ -17,9 +17,9 @@ public class Constants {
 	public static final String FOURTY = "fourty";
 	
 	public static final String SPACE = " ";
-	public static final String ADVANTAGE = "Advantage";
-	public static final String DEUCE = "Deuce";
-	public static final String GAME = "Game";
+	public static final String ADVANTAGE = "advantage";
+	public static final String DEUCE = "deuce";
+	public static final String GAME = "game";
 	
 	/**
 	 * Mapping between progressive points and tennis points

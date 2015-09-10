@@ -18,7 +18,7 @@ public class GameTest  {
 	private GameHelper gameHelper;
 	
     @Before
-    public void setUp() {
+    public void initMatch() {
     	Player player1 = new Player(PLAYER_1_NAME);
     	Player player2 = new Player(PLAYER_2_NAME);
     	game = new Game(player1, player2);
@@ -192,7 +192,7 @@ public class GameTest  {
 		gameHelper.score(game.getPlayer1());
 		assertEquals(game.getStatusDescription(), Constants.FOURTY + Constants.SPACE + Constants.THIRTY);
 		gameHelper.score(game.getPlayer2());
-		assertEquals(game.getStatusDescription(), Constants.FOURTY + Constants.SPACE + Constants.FOURTY);
+		assertEquals(game.getStatusDescription(), Constants.DEUCE);
 		gameHelper.score(game.getPlayer2());
 		assertEquals(game.getStatusDescription(), Constants.ADVANTAGE + Constants.SPACE + PLAYER_2_NAME);
 		gameHelper.score(game.getPlayer1());
@@ -202,6 +202,17 @@ public class GameTest  {
 		gameHelper.score(game.getPlayer1());
 		assertEquals(game.getStatusDescription(), Constants.GAME + Constants.SPACE + PLAYER_1_NAME);
 		assertEquals(game.getWinner(), game.getPlayer1());
+	}
+	
+	@Test
+	public void testFourtyFourty() {
+		gameHelper.score(game.getPlayer1());
+		gameHelper.score(game.getPlayer1());
+		gameHelper.score(game.getPlayer1());
+		gameHelper.score(game.getPlayer2());
+		gameHelper.score(game.getPlayer2());
+		gameHelper.score(game.getPlayer2());
+		assertEquals(game.getStatusDescription(), Constants.DEUCE);
 	}
 	
 	@After

@@ -68,7 +68,12 @@ public class GameHelper {
 			}
 		} else {
 			//case in which the score is lower or equals than 3 for both players
-			game.setStatusDescription(Constants.POINTS_MAP.get(game.getPlayer1().getScore()) + Constants.SPACE + Constants.POINTS_MAP.get(game.getPlayer2().getScore()));
+			if (player1Score == 3 && player2Score == 3) {
+				//40-40 is deuce by specification
+				game.setStatusDescription(Constants.DEUCE);
+			} else {
+				game.setStatusDescription(Constants.POINTS_MAP.get(game.getPlayer1().getScore()) + Constants.SPACE + Constants.POINTS_MAP.get(game.getPlayer2().getScore()));
+			}
 		}
 	}
 	
