@@ -10,8 +10,6 @@ public class Game {
 	
 	private Player player1;
 	private Player player2;
-	public enum Status {IN_PROGRESS, FINISHED};
-	private Status status;
 	private String statusDescription;
 	private Player winner;
 	
@@ -57,22 +55,6 @@ public class Game {
 		this.player2 = player2;
 	}
 	
-	/**
-	 * Gets the game status
-	 * @return the game status
-	 */
-	public Status getStatus() {
-		return status;
-	}
-	
-	/**
-	 * Sets the game status
-	 * @param status the game status
-	 */
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-
 	/**
 	 * Gets the status description (e.g.: "player1 fifteen - player2 thirty")
 	 * @return

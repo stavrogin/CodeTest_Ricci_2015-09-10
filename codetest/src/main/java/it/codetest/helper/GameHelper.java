@@ -1,11 +1,6 @@
 package it.codetest.helper;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
 import it.codetest.match.Game;
-import it.codetest.match.Game.Status;
 import it.codetest.match.Player;
 
 /**
@@ -15,19 +10,6 @@ import it.codetest.match.Player;
  *
  */
 public class GameHelper {
-	
-	/**
-	 * Mapping between progressive points and tennis points
-	 */
-	private static final Map<Integer, String> pointsMap;
-    static {
-        Map<Integer, String> map = new HashMap<>();
-        map.put(0, "love");
-        map.put(1, "fifteen");
-        map.put(2, "thirty");
-        map.put(3, "fourty");
-        pointsMap = Collections.unmodifiableMap(map);
-    }
 	
 	private Game game;
 	
@@ -44,27 +26,34 @@ public class GameHelper {
 	 * @param player the player who scores
 	 */
 	public void score(Player player) {
-		int score = player.getScore();
-		player.setScore(score++);
+		if (game.getWinner() == null){
+			int score = player.getScore();
+			score++;
+			player.setScore(score);
+			updateGameStatus();
+		}
 	}
 	
 	/**
 	 * Gets the game status
 	 * @return the game status
 	 */
-	public void updateGameStatus() {
+	private void updateGameStatus() {
 		int player1Score = game.getPlayer1().getScore();
 		int player2Score = game.getPlayer2().getScore();
 		
-		int difference = Math.abs(player1Score - player2Score);
-		if (difference >= 2) {
-			if (player1Score > player2Score) {
-				game.setWinner(game.getPlayer1());
-			} else {
-				game.setWinner(game.getPlayer2());
+		//check if one of the two players has scored enough points to win the game
+		if (player1Score > 3 || player2Score > 3) {
+			//if so, then check if he scored at least two points more than the opponent
+			int difference = Math.abs(player1Score - player2Score);
+			if (difference >= 2) {
+				if (player1Score > player2Score) {
+					game.setWinner(game.getPlayer1());
+				} else {
+					game.setWinner(game.getPlayer2());
+				}
 			}
 		}
-		
 	}
 	
 }
