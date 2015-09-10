@@ -21,13 +21,6 @@ public class Player {
 	}
 	
 	/**
-	 * Called when a player scores a point
-	 */
-	public void score(){
-		score++;
-	}
-	
-	/**
 	 * Gets player's name
 	 * @return the player name
 	 */
