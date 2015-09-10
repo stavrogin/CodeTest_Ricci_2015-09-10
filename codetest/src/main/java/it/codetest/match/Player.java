@@ -9,17 +9,14 @@ package it.codetest.match;
 public class Player {
 	
 	private String name;
-	private String surname;
 	private int score;
 	
 	/**
 	 * Constructor: sets player's name and surname and sets score to 0
 	 * @param name the player's name
-	 * @param surname the player's surname
 	 */
-	public Player(String name, String surname) {
+	public Player(String name) {
 		this.name = name;
-		this.surname = surname;
 		this.score = 0;
 	}
 	
@@ -46,24 +43,6 @@ public class Player {
 		this.name = name;
 	}
 	
-	
-	/**
-	 * Gets the player's surname
-	 * @return the player's surname
-	 */
-	public String getSurname() {
-		return surname;
-	}
-	
-	/**
-	 * Sets the player's surname
-	 * @param surname the player's surname
-	 */
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-	
-	
 	/**
 	 * Gets the current player's score
 	 * @return the current player's score
@@ -79,5 +58,26 @@ public class Player {
 	public void setScore(int score) {
 		this.score = score;
 	}
-
+	
+	@Override
+	public boolean equals(Object other) {
+		
+		if (this == other) return true;
+		if (other == null) return false;
+		if (getClass() != other.getClass()) return false;
+		
+		Player otherPlayer = (Player) other;
+		if (name != null && !name.equals(otherPlayer.getName())){
+			return false;
+		}
+		if (name == null && otherPlayer.getName() != null){
+			return false;
+		}
+		if (score != otherPlayer.getScore()){
+			return false;
+		}
+		
+		return true;
+	}
+	
 }

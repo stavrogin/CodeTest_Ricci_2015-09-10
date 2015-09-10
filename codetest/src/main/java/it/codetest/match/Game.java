@@ -10,8 +10,10 @@ public class Game {
 	
 	private Player player1;
 	private Player player2;
-	private int status;
-	
+	public enum Status {IN_PROGRESS, FINISHED};
+	private Status status;
+	private String statusDescription;
+	private Player winner;
 	
 	/**
 	 * Game constructor setting up a new game with both players
@@ -59,7 +61,7 @@ public class Game {
 	 * Gets the game status
 	 * @return the game status
 	 */
-	public int getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 	
@@ -67,8 +69,40 @@ public class Game {
 	 * Sets the game status
 	 * @param status the game status
 	 */
-	public void setStatus(int status) {
+	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	/**
+	 * Gets the status description (e.g.: "player1 fifteen - player2 thirty")
+	 * @return
+	 */
+	public String getStatusDescription() {
+		return statusDescription;
+	}
+
+	/**
+	 * Sets the status description (e.g.: "player1 fifteen - player2 thirty")
+	 * @param statusDescription the status description
+	 */
+	public void setStatusDescription(String statusDescription) {
+		this.statusDescription = statusDescription;
+	}
+
+	/**
+	 * Gets the winner player
+	 * @return the winner player
+	 */
+	public Player getWinner() {
+		return winner;
+	}
+
+	/**
+	 * Sets the winner player
+	 * @param winner the player who have won the game
+	 */
+	public void setWinner(Player winner) {
+		this.winner = winner;
 	}
 	
 }
